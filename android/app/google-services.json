@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "551601080933",
+    "project_id": "suasaudeapp-56441",
+    "storage_bucket": "suasaudeapp-56441.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:551601080933:android:7e3c73cafe39334059d48c",
+        "android_client_info": {
+          "package_name": "com.example.sua_saude_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "551601080933-9ldncm3k0lki5tn3b3c70ka9jfgtacej.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBKFppnJ74V2cYF03fmlAWtcG2PlHVBdWM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "551601080933-9ldncm3k0lki5tn3b3c70ka9jfgtacej.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
