@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import '../../../helpers/errors/errors.dart';
+
 import '../signup.dart';
 
 class EmailInput extends StatelessWidget {
@@ -15,11 +17,13 @@ class EmailInput extends StatelessWidget {
       () => TextFormField(
         controller: presenter.emailEditionController.value,
         keyboardType: TextInputType.emailAddress,
-        decoration: const InputDecoration(
+        decoration: InputDecoration(
           filled: true,
           labelText: 'E-mail',
-          prefixIcon: Icon(Icons.email),
+          prefixIcon: const Icon(Icons.email),
+          errorText: presenter.emailError.value?.description,
         ),
+        onChanged: presenter.validateEmail,
       ),
     );
   }

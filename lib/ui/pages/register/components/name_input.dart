@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import '../../../helpers/errors/errors.dart';
+
 import '../signup.dart';
 
 class NameInput extends StatelessWidget {
@@ -20,7 +22,12 @@ class NameInput extends StatelessWidget {
           () => Expanded(
             child: TextField(
               controller: presenter.firstNameEditionController.value,
-              decoration: const InputDecoration(filled: true, labelText: 'Primeiro Nome'),
+              decoration: InputDecoration(
+                filled: true,
+                labelText: 'Primeiro Nome',
+                errorText: presenter.firstNameError.value?.description,
+              ),
+              onChanged: presenter.validateFirstName,
             ),
           ),
         ),
@@ -28,8 +35,13 @@ class NameInput extends StatelessWidget {
         Obx(
           () => Expanded(
             child: TextField(
-              controller: presenter.passwordEditionController.value,
-              decoration: const InputDecoration(filled: true, labelText: 'Último Nome'),
+              controller: presenter.lastNameEditionController.value,
+              decoration: InputDecoration(
+                filled: true,
+                labelText: 'Último Nome',
+                errorText: presenter.lastNameError.value?.description,
+              ),
+              onChanged: presenter.validateLastName,
             ),
           ),
         ),

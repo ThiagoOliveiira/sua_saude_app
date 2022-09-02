@@ -1,6 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:sua_saude_app/ui/helpers/errors/errors.dart';
 
 import '../../../domain/entities/entities.dart';
 
@@ -13,6 +14,14 @@ abstract class FirebaseAuthPresenter implements Listenable {
 
   Rx<TextEditingController> get firstNameEditionController;
   Rx<TextEditingController> get lastNameEditionController;
+
+  Rxn<UIError?> get firstNameError;
+  Rxn<UIError?> get lastNameError;
+  Rxn<UIError?> get emailError;
+
+  void validateEmail(String email);
+  void validateFirstName(String firstName);
+  void validateLastName(String lastName);
 
   Future<UserCredential> signUp(RegisteredUserEntity registeredUserEntity);
   Future<void> signOut(String userId);

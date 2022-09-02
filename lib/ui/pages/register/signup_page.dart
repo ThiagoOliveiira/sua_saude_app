@@ -15,13 +15,13 @@ class SignUpPage extends StatelessWidget {
         elevation: 0,
         backgroundColor: Colors.transparent,
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(15.0),
+      body: SingleChildScrollView(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            Expanded(
-              flex: 1,
+            Padding(
+              padding: const EdgeInsets.all(20.0),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
@@ -32,26 +32,31 @@ class SignUpPage extends StatelessWidget {
                 ],
               ),
             ),
-            Text(
-              'Crie sua conta para que seus lembretes estejam disponíveis onde você estiver.',
-              textAlign: TextAlign.center,
-              style: Theme.of(context).textTheme.titleLarge?.copyWith(fontSize: 18),
+            Padding(
+              padding: const EdgeInsets.all(20.0),
+              child: Text(
+                'Crie sua conta para que seus lembretes estejam disponíveis onde você estiver.',
+                textAlign: TextAlign.center,
+                style: Theme.of(context).textTheme.titleLarge?.copyWith(fontSize: 18),
+              ),
             ),
             const SizedBox(height: 20),
-            Expanded(
-              flex: 3,
-              child: Column(
-                children: const [
-                  EmailInput(),
-                  SizedBox(height: 15),
-                  PasswordInput(),
-                  SizedBox(height: 15),
-                  PasswordConfirmationInput(),
-                  SizedBox(height: 15),
-                  NameInput(),
-                  SizedBox(height: 20),
-                  SignUpButton(),
-                ],
+            Padding(
+              padding: const EdgeInsets.all(20.0),
+              child: Form(
+                child: Column(
+                  children: const [
+                    EmailInput(),
+                    SizedBox(height: 15),
+                    PasswordInput(),
+                    SizedBox(height: 15),
+                    PasswordConfirmationInput(),
+                    SizedBox(height: 15),
+                    NameInput(),
+                    SizedBox(height: 20),
+                    SignUpButton(),
+                  ],
+                ),
               ),
             ),
           ],
