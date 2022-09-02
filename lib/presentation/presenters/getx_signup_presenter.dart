@@ -41,8 +41,6 @@ class GetxSignUpPresenter extends GetxController implements FirebaseAuthPresente
 
   @override
   Future<UserCredential> signUp(RegisteredUserEntity params) async {
-    print("criando");
-
     return await firebaseAuthRepository.signUp(params);
   }
 
