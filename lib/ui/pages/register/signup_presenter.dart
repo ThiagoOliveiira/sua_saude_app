@@ -9,6 +9,7 @@ abstract class FirebaseAuthPresenter implements Listenable {
 
   Rx<TextEditingController> get emailEditionController;
   Rx<TextEditingController> get passwordEditionController;
+  Rx<TextEditingController> get passwordConfirmationEditionController;
 
   Rx<TextEditingController> get firstNameEditionController;
   Rx<TextEditingController> get lastNameEditionController;

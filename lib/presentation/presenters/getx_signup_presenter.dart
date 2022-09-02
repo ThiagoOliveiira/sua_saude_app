@@ -4,32 +4,28 @@ import 'package:get/get.dart';
 import 'package:sua_saude_app/domain/entities/registered_user.dart';
 
 import '../../domain/repositories/repositories.dart';
-import '../../ui/pages/signup/signup.dart';
+import '../../ui/pages/register/signup.dart';
 
-class GetxSignUpPresenter extends GetxController
-    implements FirebaseAuthPresenter {
+class GetxSignUpPresenter extends GetxController implements FirebaseAuthPresenter {
   FirebaseAuthRepository firebaseAuthRepository;
   FirebaseUserRepository firebaseUserRepository;
 
-  GetxSignUpPresenter(
-      {required this.firebaseAuthRepository,
-      required this.firebaseUserRepository});
+  GetxSignUpPresenter({required this.firebaseAuthRepository, required this.firebaseUserRepository});
 
   @override
-  Rx<TextEditingController> emailEditionController =
-      TextEditingController().obs;
+  Rx<TextEditingController> emailEditionController = TextEditingController().obs;
 
   @override
-  Rx<TextEditingController> firstNameEditionController =
-      TextEditingController().obs;
+  Rx<TextEditingController> firstNameEditionController = TextEditingController().obs;
 
   @override
-  Rx<TextEditingController> lastNameEditionController =
-      TextEditingController().obs;
+  Rx<TextEditingController> lastNameEditionController = TextEditingController().obs;
 
   @override
-  Rx<TextEditingController> passwordEditionController =
-      TextEditingController().obs;
+  Rx<TextEditingController> passwordEditionController = TextEditingController().obs;
+
+  @override
+  Rx<TextEditingController> passwordConfirmationEditionController = TextEditingController().obs;
 
   @override
   void onInit() {

@@ -6,7 +6,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:sua_saude_app/config/themes/app_themes.dart';
 
 import '../firebase_options.dart';
-import 'factories/pages/signup/signup.dart';
+import 'factories/pages/register/register.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -34,8 +34,7 @@ class App extends StatelessWidget {
       theme: AppTheme.light,
       darkTheme: AppTheme.dark,
       getPages: [
-        GetPage(
-            name: '/signUp', page: makeSigUpPage, transition: Transition.fade),
+        GetPage(name: '/signUp', page: makeSigUpPage, transition: Transition.fade),
         // GetPage(name: '/register', page: makeLoginPage, transition: Transition.fadeIn),
         // GetPage(name: '/signup', page: makeSignUpPage),
         // GetPage(name: '/surveys', page: makeSurveysPage, transition: Transition.fadeIn),
