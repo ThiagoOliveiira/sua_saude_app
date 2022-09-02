@@ -53,7 +53,7 @@ class AppTheme {
         displayMedium: getBoldStyle(color: ColorManager.black, fontSize: 15),
         displaySmall: getMediumStyle(color: ColorManager.black, fontSize: 15),
         headlineSmall: getNormalStyle(color: ColorManager.shimmerLightGrey),
-        titleLarge: getNormalStyle(color: ColorManager.blue),
+        titleLarge: getNormalStyle(color: ColorManager.black54),
         titleSmall: getNormalStyle(color: ColorManager.darkWhite),
         titleMedium:
             getNormalStyle(color: ColorManager.naveBlue), // Usado nos TextField

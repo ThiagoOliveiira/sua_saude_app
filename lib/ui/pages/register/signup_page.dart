@@ -27,7 +27,10 @@ class SignUpPage extends StatelessWidget {
                 children: [
                   Text(
                     'Cadastre-se',
-                    style: Theme.of(context).textTheme.displayLarge?.copyWith(fontWeight: FontWeight.w500),
+                    style: Theme.of(context)
+                        .textTheme
+                        .displayLarge
+                        ?.copyWith(fontWeight: FontWeight.w500),
                   ),
                 ],
               ),
@@ -37,7 +40,10 @@ class SignUpPage extends StatelessWidget {
               child: Text(
                 'Crie sua conta para que seus lembretes estejam disponíveis onde você estiver.',
                 textAlign: TextAlign.center,
-                style: Theme.of(context).textTheme.titleLarge?.copyWith(fontSize: 18),
+                style: Theme.of(context)
+                    .textTheme
+                    .titleLarge
+                    ?.copyWith(fontSize: 18),
               ),
             ),
             const SizedBox(height: 20),

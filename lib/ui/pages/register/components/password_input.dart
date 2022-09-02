@@ -19,7 +19,7 @@ class PasswordInput extends StatelessWidget {
         decoration: InputDecoration(
           filled: true,
           labelText: 'Senha',
-          prefixIcon: const Icon(Icons.lock),
+          prefixIcon: const Icon(Icons.lock_outline),
           suffixIcon: IconButton(
             icon: const Icon(Icons.remove_red_eye),
             onPressed: () {},
