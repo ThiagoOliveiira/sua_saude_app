@@ -34,7 +34,8 @@ class App extends StatelessWidget {
       theme: AppTheme.light,
       darkTheme: AppTheme.dark,
       getPages: [
-        GetPage(name: '/signUp', page: makeSigUpPage, transition: Transition.fade),
+        GetPage(
+            name: '/signUp', page: makeSigUpPage, transition: Transition.fade),
         // GetPage(name: '/register', page: makeLoginPage, transition: Transition.fadeIn),
         // GetPage(name: '/signup', page: makeSignUpPage),
         // GetPage(name: '/surveys', page: makeSurveysPage, transition: Transition.fadeIn),

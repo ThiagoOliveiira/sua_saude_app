@@ -18,8 +18,9 @@ class SignUpButton extends StatelessWidget {
           child: Obx(() => ElevatedButton(
                 onPressed: presenter.isFormValid.value
                     ? () async {
-                        // await presenter.signUp();
-                        await presenter.addNewUser();
+                        // handleLoading(context, presenter.isLoading);
+
+                        await presenter.signUp();
                       }
                     : null,
                 child: const Text('CRIAR CONTA'),

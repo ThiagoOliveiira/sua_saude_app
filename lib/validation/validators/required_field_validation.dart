@@ -4,6 +4,7 @@ import 'package:sua_saude_app/presentation/protocols/validation.dart';
 import '../protocols/protocols.dart';
 
 class RequiredFieldValidation extends Equatable implements FieldValidation {
+  @override
   final String field;
 
   @override
@@ -12,7 +13,6 @@ class RequiredFieldValidation extends Equatable implements FieldValidation {
   const RequiredFieldValidation(this.field);
 
   @override
-  ValidationError? validate(Map input) {
-    input[field]?.isNotEmpty == true ? null : ValidationError.requiredField;
-  }
+  ValidationError? validate(Map input) =>
+      input[field]?.isNotEmpty == true ? null : ValidationError.requiredField;
 }

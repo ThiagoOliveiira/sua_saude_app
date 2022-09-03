@@ -3,7 +3,7 @@ enum DomainError {
   invalidCredentials,
   accessDenied,
   serverError,
-  emailInUse
+  emailInUse,
 }
 
 extension DomainErrorExtension on DomainError {

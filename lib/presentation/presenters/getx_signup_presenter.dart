@@ -12,7 +12,7 @@ import '../mixins/mixins.dart';
 import '../protocols/protocols.dart';
 
 class GetxSignUpPresenter extends GetxController
-    with FormManager, UIErrorManager
+    with FormManager, UIErrorManager, LoadingManager
     implements FirebaseAuthPresenter {
   final FirebaseAuthRepository firebaseAuthRepository;
   final FirebaseUserRepository firebaseUserRepository;
@@ -42,9 +42,6 @@ class GetxSignUpPresenter extends GetxController
   @override
   Rx<TextEditingController> passwordConfirmationEditionController =
       TextEditingController().obs;
-
-  @override
-  RxBool isLoading = false.obs;
 
   @override
   RxBool obscurePassword = true.obs;
@@ -150,13 +147,17 @@ class GetxSignUpPresenter extends GetxController
   @override
   Future<void> signUp() async {
     try {
-      isLoading.value = true;
+      mainError.value = null;
+      isSetLoading = true;
+
       final params = RegisteredUserEntity(
         email: _email,
         password: _password,
       );
 
-      UserCredential user = await firebaseAuthRepository.signUp(params);
+      UserCredential? user = await firebaseAuthRepository.signUp(params);
+
+      addNewUser(user!.user!.uid);
     } on DomainError catch (error) {
       switch (error) {
         case DomainError.emailInUse:
@@ -167,7 +168,7 @@ class GetxSignUpPresenter extends GetxController
           break;
       }
     }
-    isLoading.value = false;
+    // isLoading.value = false;
   }
 
   @override
@@ -181,9 +182,12 @@ class GetxSignUpPresenter extends GetxController
   }
 
   @override
-  Future<void> addNewUser() async {
+  Future<void> addNewUser(String uid) async {
     final newUser = AddUserEntity(
-        email: _email!, firstName: _firstName!, lastName: _lastName!);
+        email: _email!,
+        firstName: _firstName!,
+        lastName: _lastName!,
+        userId: uid);
     return await firebaseUserRepository.addNewUser(newUser);
   }
 }

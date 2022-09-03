@@ -1,9 +1,6 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:sua_saude_app/ui/helpers/errors/errors.dart';
-
-import '../../../domain/entities/entities.dart';
 
 abstract class FirebaseAuthPresenter implements Listenable {
   RxBool get isLoading;
@@ -30,6 +27,6 @@ abstract class FirebaseAuthPresenter implements Listenable {
   void validatePasswordConfirmation(String passwordConfirmation);
 
   Future<void> signUp();
-  Future<void> addNewUser();
+  Future<void> addNewUser(String uid);
   Future<void> signOut(String userId);
 }
