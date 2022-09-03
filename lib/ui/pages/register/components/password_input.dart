@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:sua_saude_app/config/colors/color_manager.dart';
+
+import '../../../helpers/errors/errors.dart';
 
 import '../signup.dart';
 
@@ -21,10 +24,20 @@ class PasswordInput extends StatelessWidget {
           labelText: 'Senha',
           prefixIcon: const Icon(Icons.lock_outline),
           suffixIcon: IconButton(
-            icon: const Icon(Icons.remove_red_eye),
-            onPressed: () {},
-          ),
+              icon: Icon(
+                Icons.remove_red_eye,
+                color: presenter.obscurePassword.value
+                    ? ColorManager.grey
+                    : ColorManager.blue,
+              ),
+              onPressed: () {
+                presenter.obscurePassword.value =
+                    !presenter.obscurePassword.value;
+              }),
+          errorText: presenter.passwordError.value?.description,
         ),
+        obscureText: presenter.obscurePassword.value,
+        onChanged: presenter.validatePassword,
       ),
     );
   }

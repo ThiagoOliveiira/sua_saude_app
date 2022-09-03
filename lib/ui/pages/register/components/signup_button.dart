@@ -15,14 +15,18 @@ class SignUpButton extends StatelessWidget {
     return Row(
       children: [
         Expanded(
-          child: ElevatedButton(
-            onPressed: () {
-              print(presenter.emailEditionController.value.text);
-              print(presenter.passwordEditionController.value.text);
-            },
-            child: const Text('CRIAR CONTA'),
-            style: ButtonStyle(padding: MaterialStateProperty.all(const EdgeInsets.all(15))),
-          ),
+          child: Obx(() => ElevatedButton(
+                onPressed: presenter.isFormValid.value
+                    ? () async {
+                        // await presenter.signUp();
+                        await presenter.addNewUser();
+                      }
+                    : null,
+                child: const Text('CRIAR CONTA'),
+                style: ButtonStyle(
+                    padding:
+                        MaterialStateProperty.all(const EdgeInsets.all(15))),
+              )),
         ),
       ],
     );

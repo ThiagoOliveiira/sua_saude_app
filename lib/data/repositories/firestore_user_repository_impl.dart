@@ -15,7 +15,7 @@ class FirestoreUserRepositoryImpl implements FirebaseUserRepository {
 }
 
 class AddUserParams {
-  final String userId;
+  final String? userId;
   final String email;
   final String firstName;
   final String lastName;

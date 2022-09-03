@@ -13,6 +13,9 @@ class FirestoreUserInfoDataSourceImpl implements FirestoreUser {
   Future<void> addNewUser(AddUserEntity newUserEntity) async {
     final params = AddUserParams.fromDomain(newUserEntity).toJson();
 
-    return await firestore.doc(newUserEntity.userId).set(params);
+    return await firestore
+        .collection('usuario')
+        .doc(newUserEntity.userId)
+        .set(params);
   }
 }

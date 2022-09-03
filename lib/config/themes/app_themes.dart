@@ -23,7 +23,7 @@ class AppTheme {
       iconTheme: const IconThemeData(color: ColorManager.black38),
       chipTheme:
           const ChipThemeData(backgroundColor: ColorManager.veryLowOpacityGrey),
-      errorColor: ColorManager.black,
+      errorColor: ColorManager.blackRed,
       canvasColor: ColorManager.transparent,
       splashColor: ColorManager.white,
       appBarTheme: AppBarTheme(
