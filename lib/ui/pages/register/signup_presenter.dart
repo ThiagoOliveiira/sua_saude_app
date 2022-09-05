@@ -19,6 +19,7 @@ abstract class FirebaseAuthPresenter implements Listenable {
   Rxn<UIError?> get passwordConfirmationError;
   RxBool get isFormValid;
   RxBool get obscurePassword;
+  Rxn<UIError?> get mainError;
 
   void validateEmail(String email);
   void validateFirstName(String firstName);

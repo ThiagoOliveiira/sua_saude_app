@@ -24,9 +24,7 @@ class SignUpButton extends StatelessWidget {
                       }
                     : null,
                 child: const Text('CRIAR CONTA'),
-                style: ButtonStyle(
-                    padding:
-                        MaterialStateProperty.all(const EdgeInsets.all(15))),
+                style: ButtonStyle(padding: MaterialStateProperty.all(const EdgeInsets.all(15))),
               )),
         ),
       ],

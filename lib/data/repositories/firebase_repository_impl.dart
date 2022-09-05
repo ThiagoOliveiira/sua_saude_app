@@ -1,7 +1,9 @@
+import 'package:sua_saude_app/data/http/auth_exception_handler.dart';
 import 'package:sua_saude_app/domain/entities/registered_user.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:sua_saude_app/domain/repositories/repositories.dart';
 
+import '../../domain/helpers/helpers.dart';
 import '../datasources/datasources.dart';
 
 class FirebaseAuthRepositoryImpl implements FirebaseAuthRepository {
@@ -12,8 +14,7 @@ class FirebaseAuthRepositoryImpl implements FirebaseAuthRepository {
   @override
   Future<UserCredential> logIn(RegisteredUserEntity params) async {
     try {
-      return await _firebaseAuthentication.logIn(
-          email: params.email!, password: params.password!);
+      return await _firebaseAuthentication.logIn(email: params.email!, password: params.password!);
     } catch (e) {
       return Future.error(e.toString());
     }
@@ -29,12 +30,11 @@ class FirebaseAuthRepositoryImpl implements FirebaseAuthRepository {
   }
 
   @override
-  Future<UserCredential> signUp(RegisteredUserEntity params) async {
+  Future<void> signUp(RegisteredUserEntity params) async {
     try {
-      return await _firebaseAuthentication.signUp(
-          email: params.email!, password: params.password!);
-    } catch (e) {
-      return Future.error(e.toString());
+      return await _firebaseAuthentication.signUp(email: params.email!, password: params.password!);
+    } on AuthResultStatus catch (error) {
+      throw error == AuthResultStatus.emailAlreadyExists ? DomainError.emailInUse : DomainError.unexpected;
     }
   }
 }

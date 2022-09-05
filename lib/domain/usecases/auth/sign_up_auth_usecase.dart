@@ -7,7 +7,7 @@ class SignUpAuthUseCase {
 
   SignUpAuthUseCase(this._firebaseAuthRepository);
 
-  Future<UserCredential?> call({required RegisteredUserEntity params}) async {
+  Future<void> call({required RegisteredUserEntity params}) async {
     return await _firebaseAuthRepository.signUp(params);
   }
 }

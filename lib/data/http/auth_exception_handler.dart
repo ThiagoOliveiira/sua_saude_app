@@ -2,32 +2,40 @@ import '../../domain/helpers/helpers.dart';
 
 class AuthExceptionHandler {
   static handleException(e) {
-    print(e.code);
     var status;
-    switch (e.code) {
+
+    switch (e.code.toUpperCase()) {
       case "ERROR_INVALID_EMAIL":
         status = AuthResultStatus.invalidEmail;
-        break;
-      case "ERROR_WRONG_PASSWORD":
+        throw status;
+
+      case "WRONG_PASSWORD":
         status = AuthResultStatus.wrongPassword;
-        break;
+
+        throw status;
       case "ERROR_USER_NOT_FOUND":
         status = AuthResultStatus.userNotFound;
-        break;
+        throw status;
+
       case "ERROR_USER_DISABLED":
         status = AuthResultStatus.userDisabled;
-        break;
+        throw status;
+
       case "ERROR_TOO_MANY_REQUESTS":
         status = AuthResultStatus.tooManyRequests;
-        break;
+        throw status;
+
       case "ERROR_OPERATION_NOT_ALLOWED":
         status = AuthResultStatus.operationNotAllowed;
         break;
-      case "ERROR_EMAIL_ALREADY_IN_USE":
+      case "EMAIL-ALREADY-IN-USE":
+        print("AQUII EMAIL EM USO");
         status = AuthResultStatus.emailAlreadyExists;
-        break;
+        throw status;
+
       default:
         status = AuthResultStatus.undefined;
+        throw status;
     }
     return status;
   }
@@ -57,8 +65,7 @@ class AuthExceptionHandler {
         errorMessage = "Signing in with Email and Password is not enabled.";
         break;
       case AuthResultStatus.emailAlreadyExists:
-        errorMessage =
-            "The email has already been registered. Please login or reset your password.";
+        errorMessage = "The email has already been registered. Please login or reset your password.";
         break;
       default:
         errorMessage = "An undefined Error happened.";

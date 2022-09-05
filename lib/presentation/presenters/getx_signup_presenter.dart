@@ -11,37 +11,27 @@ import '../../ui/pages/register/signup.dart';
 import '../mixins/mixins.dart';
 import '../protocols/protocols.dart';
 
-class GetxSignUpPresenter extends GetxController
-    with FormManager, UIErrorManager, LoadingManager
-    implements FirebaseAuthPresenter {
+class GetxSignUpPresenter extends GetxController with FormManager, UIErrorManager, LoadingManager implements FirebaseAuthPresenter {
   final FirebaseAuthRepository firebaseAuthRepository;
   final FirebaseUserRepository firebaseUserRepository;
   final Validation validation;
 
-  GetxSignUpPresenter(
-      {required this.firebaseAuthRepository,
-      required this.firebaseUserRepository,
-      required this.validation});
+  GetxSignUpPresenter({required this.firebaseAuthRepository, required this.firebaseUserRepository, required this.validation});
 
   @override
-  Rx<TextEditingController> emailEditionController =
-      TextEditingController().obs;
+  Rx<TextEditingController> emailEditionController = TextEditingController().obs;
 
   @override
-  Rx<TextEditingController> firstNameEditionController =
-      TextEditingController().obs;
+  Rx<TextEditingController> firstNameEditionController = TextEditingController().obs;
 
   @override
-  Rx<TextEditingController> lastNameEditionController =
-      TextEditingController().obs;
+  Rx<TextEditingController> lastNameEditionController = TextEditingController().obs;
 
   @override
-  Rx<TextEditingController> passwordEditionController =
-      TextEditingController().obs;
+  Rx<TextEditingController> passwordEditionController = TextEditingController().obs;
 
   @override
-  Rx<TextEditingController> passwordConfirmationEditionController =
-      TextEditingController().obs;
+  Rx<TextEditingController> passwordConfirmationEditionController = TextEditingController().obs;
 
   @override
   RxBool obscurePassword = true.obs;
@@ -96,8 +86,7 @@ class GetxSignUpPresenter extends GetxController
   @override
   void validatePassword(String password) {
     // ignore: unrelated_type_equality_checks
-    passwordEditionController.value.text !=
-            passwordEditionController.value.text.length - 1
+    passwordEditionController.value.text != passwordEditionController.value.text.length - 1
         ? passwordConfirmationEditionController.value.text = ''
         : passwordConfirmationEditionController.value.text;
     _password = password;
@@ -113,13 +102,7 @@ class GetxSignUpPresenter extends GetxController
   }
 
   UIError? _validateField(String field) {
-    final formData = {
-      'firstName': _firstName,
-      'lastName': _lastName,
-      'email': _email,
-      'password': _password,
-      'passwordConfirmation': _passwordConfirmation
-    };
+    final formData = {'firstName': _firstName, 'lastName': _lastName, 'email': _email, 'password': _password, 'passwordConfirmation': _passwordConfirmation};
     final error = validation.validate(field: field, input: formData);
     switch (error) {
       case ValidationError.invalidField:
@@ -147,7 +130,7 @@ class GetxSignUpPresenter extends GetxController
   @override
   Future<void> signUp() async {
     try {
-      mainError.value = null;
+      isSetMainError = null;
       isSetLoading = true;
 
       final params = RegisteredUserEntity(
@@ -155,20 +138,22 @@ class GetxSignUpPresenter extends GetxController
         password: _password,
       );
 
-      UserCredential? user = await firebaseAuthRepository.signUp(params);
+      final user = await firebaseAuthRepository.signUp(params);
 
-      addNewUser(user!.user!.uid);
+      // addNewUser(user?.user.uid);
     } on DomainError catch (error) {
+      print('tes1');
       switch (error) {
         case DomainError.emailInUse:
-          mainError.value = UIError.emailInUse;
+          print('testee');
+          isSetMainError = UIError.emailInUse;
           break;
         default:
-          mainError.value = UIError.unexpected;
+          isSetMainError = UIError.unexpected;
           break;
       }
+      isSetLoading = false;
     }
-    // isLoading.value = false;
   }
 
   @override
@@ -183,11 +168,7 @@ class GetxSignUpPresenter extends GetxController
 
   @override
   Future<void> addNewUser(String uid) async {
-    final newUser = AddUserEntity(
-        email: _email!,
-        firstName: _firstName!,
-        lastName: _lastName!,
-        userId: uid);
+    final newUser = AddUserEntity(email: _email!, firstName: _firstName!, lastName: _lastName!, userId: uid);
     return await firebaseUserRepository.addNewUser(newUser);
   }
 }
