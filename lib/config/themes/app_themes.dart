@@ -21,6 +21,9 @@ class AppTheme {
       backgroundColor: ColorManager.lightBlack,
       scaffoldBackgroundColor: ColorManager.white,
       iconTheme: const IconThemeData(color: ColorManager.black38),
+      listTileTheme: const ListTileThemeData(
+        iconColor: Colors.red,
+      ),
       chipTheme:
           const ChipThemeData(backgroundColor: ColorManager.veryLowOpacityGrey),
       errorColor: ColorManager.blackRed,
@@ -64,10 +67,11 @@ class AppTheme {
   static ThemeData get dark {
     return ThemeData(
       primaryColor: ColorManager.white,
+      primaryColorDark: ColorManager.white,
       primaryColorLight: ColorManager.black54,
-      primarySwatch: Colors.grey,
-      hintColor: ColorManager.darkGray,
-      shadowColor: ColorManager.darkGray,
+      primarySwatch: Colors.lightBlue,
+      hintColor: ColorManager.white, // LabelText unselect
+      shadowColor: ColorManager.white,
       focusColor: ColorManager.white,
       dialogBackgroundColor: ColorManager.white,
       hoverColor: ColorManager.grey,
@@ -77,31 +81,37 @@ class AppTheme {
       iconTheme: const IconThemeData(color: ColorManager.white),
       chipTheme:
           const ChipThemeData(backgroundColor: ColorManager.lightDarkGray),
+      listTileTheme: const ListTileThemeData(iconColor: Colors.white),
       backgroundColor: ColorManager.darkGray,
-      errorColor: ColorManager.grey,
+      errorColor: ColorManager.redAccent,
       disabledColor: ColorManager.white,
-      scaffoldBackgroundColor: ColorManager.black,
+      scaffoldBackgroundColor: ColorManager.naveBlue,
       canvasColor: ColorManager.transparent,
-      splashColor: ColorManager.darkGray,
+      splashColor: ColorManager.white,
+
       appBarTheme: AppBarTheme(
         elevation: 0,
         iconTheme: const IconThemeData(color: ColorManager.white),
-        color: ColorManager.black,
-        shadowColor: ColorManager.lowOpacityGrey,
+        color: ColorManager.white,
+        shadowColor: ColorManager.white,
         titleTextStyle:
             getNormalStyle(fontSize: FontSize.s16, color: ColorManager.white),
       ),
+      primaryIconTheme: IconThemeData(
+        color: ColorManager.white,
+      ),
+
       textTheme: TextTheme(
         bodyLarge: getNormalStyle(color: ColorManager.white),
-        bodyMedium: getNormalStyle(color: ColorManager.darkGray),
-        bodySmall: getNormalStyle(color: ColorManager.lightGrey),
+        bodyMedium: getNormalStyle(color: ColorManager.white),
+        bodySmall: getNormalStyle(color: ColorManager.white),
         displayLarge: getNormalStyle(color: ColorManager.grey, fontSize: 15),
         displayMedium: getBoldStyle(color: ColorManager.white, fontSize: 15),
         displaySmall: getMediumStyle(color: ColorManager.white, fontSize: 15),
         headlineSmall: getNormalStyle(color: Colors.grey[500]!),
         titleLarge: getNormalStyle(color: ColorManager.shimmerDarkGrey),
         titleSmall: getNormalStyle(color: ColorManager.darkGray),
-        titleMedium: getNormalStyle(color: ColorManager.darkGray),
+        titleMedium: getNormalStyle(color: ColorManager.white),
       ),
     );
   }

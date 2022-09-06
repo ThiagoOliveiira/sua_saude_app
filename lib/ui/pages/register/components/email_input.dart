@@ -20,7 +20,10 @@ class EmailInput extends StatelessWidget {
         decoration: InputDecoration(
           filled: true,
           labelText: 'E-mail',
-          prefixIcon: const Icon(Icons.email_outlined),
+          prefixIcon: Icon(
+            Icons.email_outlined,
+            // color: Theme.of(context).listTileTheme.iconColor,
+          ),
           errorText: presenter.emailError.value?.description,
         ),
         onChanged: presenter.validateEmail,
